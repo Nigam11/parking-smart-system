@@ -14,7 +14,6 @@ function ParkVehicle({ api, refresh, setMessage, notify }) {
 
     const data = await res.json();
     setMessage(data.message);
-    notify(data.message);
     refresh();
   };
 
@@ -42,26 +41,23 @@ function ParkVehicle({ api, refresh, setMessage, notify }) {
     <div className="card">
       <h2>Park / Remove Vehicle</h2>
 
-      {/* ✅ FIXED CHECKBOX LAYOUT */}
-      <div className="checkbox-group">
-        <label className="checkbox-row">
-          <input
-            type="checkbox"
-            checked={needsEV}
-            onChange={() => setNeedsEV(!needsEV)}
-          />
-          <span>Needs EV Charging</span>
-        </label>
+      <label>
+        <input
+          type="checkbox"
+          checked={needsEV}
+          onChange={() => setNeedsEV(!needsEV)}
+        />
+        Needs EV Charging
+      </label>
 
-        <label className="checkbox-row">
-          <input
-            type="checkbox"
-            checked={needsCover}
-            onChange={() => setNeedsCover(!needsCover)}
-          />
-          <span>Needs Covered Slot</span>
-        </label>
-      </div>
+      <label>
+        <input
+          type="checkbox"
+          checked={needsCover}
+          onChange={() => setNeedsCover(!needsCover)}
+        />
+        Needs Covered Slot
+      </label>
 
       <button onClick={parkVehicle}>Park Vehicle</button>
 

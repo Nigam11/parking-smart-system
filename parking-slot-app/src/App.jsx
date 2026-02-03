@@ -4,8 +4,8 @@ import ParkVehicle from "./components/ParkVehicle";
 import SlotList from "./components/SlotList";
 import OutputPanel from "./components/OutputPanel";
 
-// ✅ LIVE BACKEND URL
-const API_URL = "https://parking-smart-system-backend.onrender.com";
+// ✅ LIVE BACKEND (Render)
+const API_BASE = "https://parking-smart-system-backend.onrender.com";
 
 function App() {
   const [slots, setSlots] = useState([]);
@@ -19,14 +19,9 @@ function App() {
   };
 
   const fetchSlots = async () => {
-    try {
-      const res = await fetch(`${API_URL}/slots`);
-      const data = await res.json();
-      setSlots(data);
-    } catch (err) {
-      console.error("Error fetching slots:", err);
-      showToast("Backend not reachable");
-    }
+    const res = await fetch(`${API_BASE}/slots`);
+    const data = await res.json();
+    setSlots(data);
   };
 
   useEffect(() => {
@@ -40,6 +35,7 @@ function App() {
 
   return (
     <div className="container">
+      {/* CENTER POPUP */}
       {toast && (
         <div className="toast">
           <div className="toast-box">{toast}</div>
@@ -68,14 +64,13 @@ function App() {
         }}
       >
         <AddSlot
-          api={API_URL}
+          api={API_BASE}
           refresh={fetchSlots}
           setMessage={setMessage}
           notify={showToast}
         />
-
         <ParkVehicle
-          api={API_URL}
+          api={API_BASE}
           refresh={fetchSlots}
           setMessage={setMessage}
           notify={showToast}
@@ -83,6 +78,8 @@ function App() {
       </div>
 
       <SlotList slots={slots} />
+
+      {/* 🔥 theme pass kiya */}
       <OutputPanel message={message} theme={theme} />
     </div>
   );
