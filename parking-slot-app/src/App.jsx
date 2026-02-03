@@ -5,7 +5,7 @@ import SlotList from "./components/SlotList";
 import OutputPanel from "./components/OutputPanel";
 
 // ✅ LIVE BACKEND URL (production-ready)
-const API_BASE = "https://parking-smart-system-backend.onrender.com";
+const API_URL = "https://parking-smart-system-backend.onrender.com";
 
 function App() {
   const [slots, setSlots] = useState([]);
