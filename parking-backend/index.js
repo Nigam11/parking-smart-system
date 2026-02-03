@@ -2,10 +2,23 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+
+/* =========================
+   MIDDLEWARE
+   ========================= */
+
+// ✅ Enable CORS for Vercel frontend
+app.use(
+  cors({
+    origin: "*", // production + local both allowed
+  })
+);
+
 app.use(express.json());
 
-// In-memory parking slots
+/* =========================
+   In-memory parking slots
+   ========================= */
 let slots = [];
 
 /* =========================
@@ -25,7 +38,7 @@ app.post("/slots", (req, res) => {
     return res.status(400).json({ message: "Slot number is required" });
   }
 
-  if (slots.find((s) => s.slotNo === slotNo)) {
+  if (slots.find((s) => s.slotNo === Number(slotNo))) {
     return res.status(400).json({ message: "Slot already exists" });
   }
 
@@ -72,7 +85,7 @@ app.post("/park", (req, res) => {
 app.post("/remove", (req, res) => {
   const { slotNo } = req.body;
 
-  const slot = slots.find((s) => s.slotNo === slotNo);
+  const slot = slots.find((s) => s.slotNo === Number(slotNo));
 
   if (!slot || !slot.isOccupied) {
     return res.json({ message: "Invalid slot or already free" });
@@ -86,9 +99,10 @@ app.post("/remove", (req, res) => {
 });
 
 /* =========================
-   Server Start
+   Server Start (IMPORTANT)
    ========================= */
-const PORT = 5002;
+const PORT = process.env.PORT || 5002;
+
 app.listen(PORT, () => {
-  console.log(`✅ Backend running on http://localhost:${PORT}`);
+  console.log(`✅ Backend running on port ${PORT}`);
 });
