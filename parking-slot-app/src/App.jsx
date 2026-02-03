@@ -4,7 +4,8 @@ import ParkVehicle from "./components/ParkVehicle";
 import SlotList from "./components/SlotList";
 import OutputPanel from "./components/OutputPanel";
 
-const API_BASE = "http://localhost:5002";
+// ✅ LIVE BACKEND URL (production-ready)
+const API_BASE = "https://parking-smart-system-backend.onrender.com";
 
 function App() {
   const [slots, setSlots] = useState([]);
@@ -18,9 +19,14 @@ function App() {
   };
 
   const fetchSlots = async () => {
-    const res = await fetch(`${API_BASE}/slots`);
-    const data = await res.json();
-    setSlots(data);
+    try {
+      const res = await fetch(`${API_BASE}/slots`);
+      const data = await res.json();
+      setSlots(data);
+    } catch (err) {
+      console.error("Error fetching slots:", err);
+      showToast("Backend not reachable");
+    }
   };
 
   useEffect(() => {
@@ -68,6 +74,7 @@ function App() {
           setMessage={setMessage}
           notify={showToast}
         />
+
         <ParkVehicle
           api={API_BASE}
           refresh={fetchSlots}
@@ -78,7 +85,6 @@ function App() {
 
       <SlotList slots={slots} />
 
-      {/* 🔥 theme pass kiya */}
       <OutputPanel message={message} theme={theme} />
     </div>
   );
