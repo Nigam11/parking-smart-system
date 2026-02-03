@@ -19,7 +19,7 @@ body[data-theme="light"] {
   --border-light: #e2e8f0;
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
-  --text-main: #0f172a;     /* 🔥 dark readable text */
+  --text-main: #0f172a;
   --text-muted: #475569;
   --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
@@ -58,7 +58,12 @@ h1 {
   box-shadow: var(--shadow-soft);
   border: 1px solid var(--border-light);
   transition: var(--transition);
+  overflow: hidden; /* 🔥 extra safety */
 }
+
+/* ================= */
+/* INPUTS */
+/* ================= */
 
 input {
   width: 100%;
@@ -72,6 +77,12 @@ input {
   transition: var(--transition);
 }
 
+/* 🔥 FIX: checkbox should NOT be full width */
+input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
 input::placeholder {
   color: var(--text-muted);
 }
@@ -79,6 +90,10 @@ input::placeholder {
 input:focus {
   border-color: var(--primary);
 }
+
+/* ================= */
+/* BUTTON */
+/* ================= */
 
 button {
   width: 100%;
@@ -97,6 +112,10 @@ button:hover {
   background: var(--primary-hover);
   transform: translateY(-1px);
 }
+
+/* ================= */
+/* TABLE */
+/* ================= */
 
 table {
   width: 100%;
@@ -142,9 +161,9 @@ tr:hover td {
   color: #ffb347;
 }
 
-/* ========== */
+/* ================= */
 /* TOAST POPUP */
-/* ========== */
+/* ================= */
 
 .toast {
   position: fixed;
@@ -158,7 +177,10 @@ tr:hover td {
   z-index: 1000;
 }
 
-/* responsive */
+/* ================= */
+/* RESPONSIVE */
+/* ================= */
+
 @media (max-width: 768px) {
   h1 {
     font-size: 1.7rem;
