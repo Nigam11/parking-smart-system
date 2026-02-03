@@ -16,7 +16,7 @@ function AddSlot({ api, refresh, setMessage, notify }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        slotNo: Number(slotNo),
+        slotNo,
         isCovered,
         isEVCharging,
       }),
@@ -36,15 +36,17 @@ function AddSlot({ api, refresh, setMessage, notify }) {
     <div className="card">
       <h2 style={{ marginBottom: "16px" }}>Add Parking Slot</h2>
 
+      {/* Slot number */}
       <input
-        type="number"
-        placeholder="Slot Number"
+        type="text"
+        placeholder="Slot Number (e.g. A1, 101)"
         value={slotNo}
         onChange={(e) => setSlotNo(e.target.value)}
+        style={{ marginBottom: "14px" }}
       />
 
-      {/* ✅ FIXED CHECKBOX LAYOUT */}
-      <div style={{ marginTop: "14px", display: "flex", flexDirection: "column", gap: "10px" }}>
+      {/* Checkboxes */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <label style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <input
             type="checkbox"
@@ -60,11 +62,16 @@ function AddSlot({ api, refresh, setMessage, notify }) {
             checked={isEVCharging}
             onChange={() => setIsEVCharging(!isEVCharging)}
           />
-          <span>EV Charging</span>
+          <span>EV Charging Available</span>
         </label>
       </div>
 
-      <button style={{ marginTop: "16px" }} onClick={addSlot}>
+      {/* Button */}
+      <button
+        style={{ marginTop: "18px", width: "100%" }}
+        onClick={addSlot}
+        disabled={!slotNo}
+      >
         Add Slot
       </button>
     </div>
