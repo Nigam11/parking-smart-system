@@ -57,7 +57,7 @@ function AddSlot({ api, refresh, setMessage, notify }) {
             checked={isCovered}
             onChange={() => setIsCovered(!isCovered)}
           />
-          <span>Covered Slot</span>
+          Covered Slot
         </label>
 
         <label style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -66,7 +66,7 @@ function AddSlot({ api, refresh, setMessage, notify }) {
             checked={isEVCharging}
             onChange={() => setIsEVCharging(!isEVCharging)}
           />
-          <span>EV Charging Available</span>
+          EV Charging Available
         </label>
       </div>
 
