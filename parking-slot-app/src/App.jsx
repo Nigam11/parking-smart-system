@@ -4,7 +4,7 @@ import ParkVehicle from "./components/ParkVehicle";
 import SlotList from "./components/SlotList";
 import OutputPanel from "./components/OutputPanel";
 
-// ✅ LIVE BACKEND URL (production-ready)
+// ✅ LIVE BACKEND URL
 const API_URL = "https://parking-smart-system-backend.onrender.com";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 
   const fetchSlots = async () => {
     try {
-      const res = await fetch(`${API_BASE}/slots`);
+      const res = await fetch(`${API_URL}/slots`);
       const data = await res.json();
       setSlots(data);
     } catch (err) {
@@ -40,7 +40,6 @@ function App() {
 
   return (
     <div className="container">
-      {/* CENTER POPUP */}
       {toast && (
         <div className="toast">
           <div className="toast-box">{toast}</div>
@@ -69,14 +68,14 @@ function App() {
         }}
       >
         <AddSlot
-          api={API_BASE}
+          api={API_URL}
           refresh={fetchSlots}
           setMessage={setMessage}
           notify={showToast}
         />
 
         <ParkVehicle
-          api={API_BASE}
+          api={API_URL}
           refresh={fetchSlots}
           setMessage={setMessage}
           notify={showToast}
@@ -84,7 +83,6 @@ function App() {
       </div>
 
       <SlotList slots={slots} />
-
       <OutputPanel message={message} theme={theme} />
     </div>
   );
