@@ -51,7 +51,7 @@ function AddSlot({ api, refresh, setMessage, notify }) {
           marginTop: "10px",
         }}
       >
-        <label style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <label style={{ display: "flex", alignItems: "center", gap: "1px" }}>
           <input
             type="checkbox"
             checked={isCovered}
@@ -60,7 +60,7 @@ function AddSlot({ api, refresh, setMessage, notify }) {
           Covered Slot
         </label>
 
-        <label style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <label style={{ display: "flex", alignItems: "center", gap: "1px" }}>
           <input
             type="checkbox"
             checked={isEVCharging}
