@@ -43,23 +43,24 @@ function AddSlot({ api, refresh, setMessage, notify }) {
         onChange={(e) => setSlotNo(e.target.value)}
       />
 
-      <div style={{ marginTop: "12px" }}>
-        <label style={{ display: "flex", gap: "10px", marginBottom: "8px" }}>
+      {/* ✅ FIXED CHECKBOX LAYOUT */}
+      <div style={{ marginTop: "14px", display: "flex", flexDirection: "column", gap: "10px" }}>
+        <label style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <input
             type="checkbox"
             checked={isCovered}
             onChange={() => setIsCovered(!isCovered)}
           />
-          Covered Slot
+          <span>Covered Slot</span>
         </label>
 
-        <label style={{ display: "flex", gap: "10px" }}>
+        <label style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <input
             type="checkbox"
             checked={isEVCharging}
             onChange={() => setIsEVCharging(!isEVCharging)}
           />
-          EV Charging
+          <span>EV Charging</span>
         </label>
       </div>
 
