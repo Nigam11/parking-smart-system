@@ -75,7 +75,8 @@ h1 {
 /* FORM ELEMENTS */
 /* ===================== */
 
-input {
+/* ✅ NORMAL INPUTS ONLY */
+input:not([type="checkbox"]) {
   width: 100%;
   padding: 12px 14px;
   margin: 12px 0;
@@ -94,33 +95,29 @@ input:focus {
   border-color: var(--primary);
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 14px;
-  border-radius: var(--radius-md);
-  border: none;
-  background: var(--primary);
-  color: #ffffff;
-  font-weight: 600;
+/* ===================== */
+/* ✅ CHECKBOX FIX (MAIN FIX) */
+/* ===================== */
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 14px 0;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--text-main);
   cursor: pointer;
-  transition: var(--transition);
 }
 
-button:hover {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
-}
-
-/* ===================== */
-/* ✅ CHECKBOX UI FIX */
-/* ===================== */
-
-input[type="checkbox"] {
+.checkbox-row input[type="checkbox"] {
   width: auto;
-  height: auto;
   margin: 0;
-  margin-right: 4px;
   padding: 0;
   cursor: pointer;
 }

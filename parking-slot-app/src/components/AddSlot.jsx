@@ -34,39 +34,33 @@ function AddSlot({ api, refresh, setMessage, notify }) {
 
   return (
     <div className="card">
-      <h2 style={{ marginBottom: "16px" }}>Add Parking Slot</h2>
+      <h2>Add Parking Slot</h2>
 
       <input
         type="text"
-        placeholder="Slot Number (e.g. A1, 101)"
+        placeholder="Slot Number"
         value={slotNo}
         onChange={(e) => setSlotNo(e.target.value)}
       />
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "12px",
-          marginTop: "10px",
-        }}
-      >
-        <label style={{ display: "flex", alignItems: "center", gap: "1px" }}>
+      {/* ✅ CHECKBOX GROUP */}
+      <div className="checkbox-group">
+        <label className="checkbox-row">
           <input
             type="checkbox"
             checked={isCovered}
             onChange={() => setIsCovered(!isCovered)}
           />
-          Covered Slot
+          <span>Covered Slot</span>
         </label>
 
-        <label style={{ display: "flex", alignItems: "center", gap: "1px" }}>
+        <label className="checkbox-row">
           <input
             type="checkbox"
             checked={isEVCharging}
             onChange={() => setIsEVCharging(!isEVCharging)}
           />
-          EV Charging Available
+          <span>EV Charging</span>
         </label>
       </div>
 
