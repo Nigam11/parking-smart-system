@@ -36,17 +36,21 @@ function AddSlot({ api, refresh, setMessage, notify }) {
     <div className="card">
       <h2 style={{ marginBottom: "16px" }}>Add Parking Slot</h2>
 
-      {/* Slot number */}
       <input
         type="text"
         placeholder="Slot Number (e.g. A1, 101)"
         value={slotNo}
         onChange={(e) => setSlotNo(e.target.value)}
-        style={{ marginBottom: "14px" }}
       />
 
-      {/* Checkboxes */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+          marginTop: "10px",
+        }}
+      >
         <label style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <input
             type="checkbox"
@@ -66,12 +70,7 @@ function AddSlot({ api, refresh, setMessage, notify }) {
         </label>
       </div>
 
-      {/* Button */}
-      <button
-        style={{ marginTop: "18px", width: "100%" }}
-        onClick={addSlot}
-        disabled={!slotNo}
-      >
+      <button onClick={addSlot} disabled={!slotNo}>
         Add Slot
       </button>
     </div>
